@@ -1,0 +1,33 @@
+use labassessment1;
+create table emp(empid Integer primary key, empname varChar(20), dob date);
+insert into emp values(1, "Pratham", "2023-02-09");
+insert into emp values(2, "Rahul", "2023-02-10");
+insert into emp values(3, "Sarthak", "2023-02-11");
+insert into emp values(4, "Ayush", "2023-02-12");
+insert into emp values(5, "Srajeta", "2023-02-13");
+alter table emp add Salary varChar(20);
+insert into emp values(6, "Harsh", "2023-02-14",""),(7, "Rohit", "2023-02-15","");
+update emp set Salary=10000 where empid=1;
+update emp set Salary=20000 where empid=2;
+update emp set Salary=30000 where empid=3;
+update emp set Salary=40000 where empid=4;
+update emp set Salary=50000 where empid=5;
+update emp set Salary=60000 where empid=6;
+update emp set Salary=70000 where empid=7;
+
+update emp set Salary=NULL where empid=5;
+select sum(Salary) from emp;
+select avg(Salary) from emp;
+select max(Salary) from emp;
+select min(Salary) from emp;
+select empname from emp where salary = (select max(salary) from emp where salary <> (select max(salary) from emp));
+select empname from emp where Salary <> (select max(salary) from emp);
+
+set sql_safe_updates=0;
+update emp set salary = salary + salary * 0.1;
+
+select * from emp;
+
+truncate table emp;
+alter table emp;
+drop table emp;
